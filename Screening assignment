@@ -1,0 +1,44 @@
+from pathlib2 import Path
+import logging as log
+
+# Creating a function to
+# replace the text
+def replace(a, b):
+  log.basicConfig(filename="changes.log",
+                  format='%(asctime)s %(message)s',
+                  filemode='w')  
+  loger = log.getLogger()
+  loger.setLevel(log.DEBUG)
+  log.info("Opening a file in order to read")
+
+  
+  # Opening the file using the Path function
+  file = Path(r"/content/example.txt")
+
+  # Reading and storing the content of the file in
+  # a data variable
+  data = file.read_text()
+
+  # Replacing the text using the replace function
+  data = data.replace(a, b)
+
+  # Writing the replaced data
+  # in the text file
+  file.write_text(data)
+
+  # Return "Text replaced" string
+  return "Text replaced"
+  
+  
+# Creating a variable and storing
+# the text that we want to search
+a = "placement"
+  
+# Creating a variable and storing
+# the text that we want to update
+b = "screening"
+  
+# Calling the replacetext function
+# and printing the returned statement
+print(replace(a, b))
+log.info("Replacment done")
